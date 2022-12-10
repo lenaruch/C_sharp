@@ -17,6 +17,6 @@ double x3 = Convert.ToDouble(Console.ReadLine());
 Console.Write("Введите Y третьей точки: ");
 double y3 = Convert.ToDouble(Console.ReadLine());
 
-double dist = Math.Sqrt(Math.Pow(x1 - x2 - x3, 2) + Math.Pow(y1 - y2 - y3, 2));
+double dist = Math.Sqrt(Math.Pow(x1 - x2, 2) + Math.Pow(y1 - y2, 2) + Math.Pow(x3 - y3, 2));
 
 Console.WriteLine(Math.Round(dist, 2));
