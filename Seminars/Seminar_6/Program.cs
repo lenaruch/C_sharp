@@ -132,16 +132,16 @@
 // }
 // Console.WriteLine(result);
 
-Console.Clear();
-Console.Write("Введите число: ");
-int n = Convert.ToInt32(Console.ReadLine());
-string result = string.Empty;
-while (n > 0)
-{
-result = Convert.ToString(n % 2) + result;
-n /= 2; // n = n / 2;
-}
-Console.WriteLine(result);
+// Console.Clear();
+// Console.Write("Введите число: ");
+// int n = Convert.ToInt32(Console.ReadLine());
+// string result = string.Empty;
+// while (n > 0)
+// {
+// result = Convert.ToString(n % 2) + result;
+// n /= 2; // n = n / 2;
+// }
+// Console.WriteLine(result);
 
 // *******************************************************************************
 
@@ -150,9 +150,29 @@ Console.WriteLine(result);
 // Если N = 3 -> 0 1 1
 // Если N = 7 -> 0 1 1 2 3 5 8
 
+// Console.Clear();
+// Console.Write("Введите число: ");
+// int n = Convert.ToInt32(Console.ReadLine()), a0 = 0, a1 = 1;
+// for (int i = 0; i < n; i++)
+// {
+// Console.Write($"{a0} ");
+// int x = a0 + a1;
+// a0 = a1;
+// a1 = x;
+// }
+
 // *******************************************************************************
 
 // Задача 45: Напишите программу, которая будет создавать копию заданного массива с помощью поэлементного копирования.
+
+// int[] a = {1, 2, 3, 4, 5};
+// int[] b = new int[a.Length];
+// for (int i = 0; i < a.Length; i++)
+// b[i] = a[i];
+
+// b[0] = -1;
+// Console.WriteLine(string.Join(" ", a));
+// Console.WriteLine(string.Join(" ", b));
 
 // *******************************************************************************
 
