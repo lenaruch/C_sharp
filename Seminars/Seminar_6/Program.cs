@@ -120,6 +120,29 @@
 // 3  -> 11
 // 2  -> 10
 
+// Console.Clear();
+// Console.Write("Введите число: ");
+// int n = Convert.ToInt32(Console.ReadLine());
+// string result = string.Empty;
+// while (n > 0)
+// {
+// result = result + Convert.ToString(n % 2); 
+// данный результат нужно развернуть в обратную сторону...для этого нужно поменять местами слагаемые
+// n /= 2; // n = n / 2;
+// }
+// Console.WriteLine(result);
+
+Console.Clear();
+Console.Write("Введите число: ");
+int n = Convert.ToInt32(Console.ReadLine());
+string result = string.Empty;
+while (n > 0)
+{
+result = Convert.ToString(n % 2) + result;
+n /= 2; // n = n / 2;
+}
+Console.WriteLine(result);
+
 // *******************************************************************************
 
 // Задача 44: Не используя рекурсию, выведите первые N чисел Фибоначчи. Первые два числа Фибоначчи: 0 и 1.
