@@ -36,7 +36,7 @@
 // for (int i = 0; i < s.Length; i++)
 //     Console.WriteLine(s[i]);
 
-// int[] s = Console.ReadLine().Split(" ").Select(x => int.Parse(x)).ToArray();
+// int[] s = Console.ReadLine().Split(" ").Select(x => int.Parse(x)).ToArray(); // ввод значенеий через пробел
 // foreach (int element in s)
 //     Console.WriteLine(element * 2);
 
