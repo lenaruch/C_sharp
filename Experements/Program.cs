@@ -1,56 +1,40 @@
-﻿// Задача 56: Задайте прямоугольный двумерный массив. 
-// Напишите программу, которая будет находить строку с наименьшей суммой элементов.
-// Например, задан массив:
-// 1 4 7 2
-// 5 9 2 3
-// 8 4 2 4
-// 5 2 6 7
-// Программа считает сумму элементов в каждой строке и выдаёт номер строки с наименьшей суммой элементов: 1 строка
+﻿// Задача 60. ...Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. 
+// Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
+// Массив размером 2 x 2 x 2
+// 66(0,0,0) 25(0,1,0)
+// 34(1,0,0) 41(1,1,0)
+// 27(0,0,1) 90(0,1,1)
+// 26(1,0,1) 55(1,1,1)
 
-void InputMatrix(int[,] matrix)
+void InputMatrix(int[,,] matrix)
 {
+    int n = 10;
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            matrix[i, j] = new Random().Next(-10, 11); // [-10, 10]
-            Console.Write($"{matrix[i, j]} \t");
+            for ( int k = 0; k < matrix.GetLength(2); k++)
+            {
+                matrix[i, j, k] = n;
+                Console.Write($"{matrix[i, j, k]} {(i,j,k)}\t");
+                n = n + 1;
+            }
         }
         Console.WriteLine();
         
     }
 }
 
-void SumStringMatrix(int[,] matrix)
-{
-    int index = 0, minsum = 0;
-    for (int i = 0; i < matrix.GetLength(0); i++)
-    {
-        int sum = 0;
-        for (int j = 0; j < matrix.GetLength(1); j++) // суммирование элементов каждой сторки
-        {
-            sum += matrix[i, j];
-        }
-        Console.WriteLine($"Сумма {i + 1} строки = {sum}"); // вывод суммы с указанием номера строки
-        
-        if (i == 0) 
-        {
-            minsum = sum;
-        }
-        else if (sum < minsum)
-        {
-            minsum = sum;
-            index = i;
-        }
-    }
-    Console.WriteLine($"Строка с минимальной суммой элементов это: {index+1}");
-} 
-
 Console.Clear();
 Console.Write("Введите размер массива (число строк и столбцов): ");
 int[] size = Console.ReadLine().Split(" ").Select(x => int.Parse(x)).ToArray();
-int[,] matrix = new int[size[0], size[1]];
-Console.WriteLine("Начальный массив:");
+int[,,] matrix = new int[size[0], size[1], size[2]];
+while (size[0] * size[1] * size[2] > 99)
+{
+   Console.Write("Ошибка, повторите ввод: ");
+   size = Console.ReadLine().Split(" ").Select(x => int.Parse(x)).ToArray();
+   matrix = new int[size[0], size[1], size[2]];
+}
+Console.WriteLine("______________________________________________________");
 InputMatrix(matrix);
-Console.WriteLine("Сумма элементов каждой из сторк:");
-SumStringMatrix(matrix);
+
