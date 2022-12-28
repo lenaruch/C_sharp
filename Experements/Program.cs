@@ -1,10 +1,11 @@
-﻿// Задача 50. Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, 
-// и возвращает значение этого элемента или же указание, что такого элемента нет.
+﻿// Задача 56: Задайте прямоугольный двумерный массив. 
+// Напишите программу, которая будет находить строку с наименьшей суммой элементов.
 // Например, задан массив:
 // 1 4 7 2
 // 5 9 2 3
 // 8 4 2 4
-// 1 7 -> такой позиции в массиве нет (пользователь вводит нумерацию с 1)
+// 5 2 6 7
+// Программа считает сумму элементов в каждой строке и выдаёт номер строки с наименьшей суммой элементов: 1 строка
 
 void InputMatrix(int[,] matrix)
 {
@@ -16,26 +17,40 @@ void InputMatrix(int[,] matrix)
             Console.Write($"{matrix[i, j]} \t");
         }
         Console.WriteLine();
+        
     }
 }
 
+void SumStringMatrix(int[,] matrix)
+{
+    int index = 0, minsum = 0;
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        int sum = 0;
+        for (int j = 0; j < matrix.GetLength(1); j++) // суммирование элементов каждой сторки
+        {
+            sum += matrix[i, j];
+        }
+        Console.WriteLine($"Сумма {i + 1} строки = {sum}"); // вывод суммы с указанием номера строки
+        
+        if (i == 0) 
+        {
+            minsum = sum;
+        }
+        else if (sum < minsum)
+        {
+            minsum = sum;
+            index = i;
+        }
+    }
+    Console.WriteLine($"Строка с минимальной суммой элементов это: {index+1}");
+} 
+
 Console.Clear();
-int[,] matrix = new int[5, 5];
+Console.Write("Введите размер массива (число строк и столбцов): ");
+int[] size = Console.ReadLine().Split(" ").Select(x => int.Parse(x)).ToArray();
+int[,] matrix = new int[size[0], size[1]];
+Console.WriteLine("Начальный массив:");
 InputMatrix(matrix);
-Console.Write("Введите номер строки: ");
-int x = Convert.ToInt32(Console.ReadLine());
-while (x < 1 || x > 5)
-{
-   Console.Write("Такой сторки нет, повторите ввод cтроки: ");
-   x = Convert.ToInt32(Console.ReadLine());
-}
-Console.Write("Введите номер столбца: ");
-
-int y = Convert.ToInt32(Console.ReadLine());
-while (y < 1 || y > 5)
-{
-   Console.Write("Такой столбца нет, повторите ввод cтолбца: ");
-   y = Convert.ToInt32(Console.ReadLine());
-}
-
-Console.WriteLine(matrix[x-1, y-1]);
+Console.WriteLine("Сумма элементов каждой из сторк:");
+SumStringMatrix(matrix);
