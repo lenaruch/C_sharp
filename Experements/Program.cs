@@ -1,40 +1,43 @@
-﻿// Задача 60. ...Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. 
-// Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
-// Массив размером 2 x 2 x 2
-// 66(0,0,0) 25(0,1,0)
-// 34(1,0,0) 41(1,1,0)
-// 27(0,0,1) 90(0,1,1)
-// 26(1,0,1) 55(1,1,1)
+﻿
+Console.Clear();
+Console.Write("Введите размеры матриц: ");
+int[] size = Console.ReadLine().Split(" ").Select(x => int.Parse(x)).ToArray();
+int[,] m = new int[size[0], size[1]];
+int[,] n = new int[size[0], size[1]];
+int[,] p = new int[size[0], size[1]];
+Console.WriteLine($"Первая матрица:");
+CreateArray(firstMartrix);
+Console.WriteLine($"Вторая матрица:");
+CreateArray(secomdMartrix);
+Console.WriteLine($"Результат:");
+//MultiplyMatrix(firstMartrix, secomdMartrix, resultMatrix);
 
-void InputMatrix(int[,,] matrix)
+void MultiplyMatrix(int[,] firstMartrix, int[,] secomdMartrix, int[,] resultMatrix)
 {
-    int n = 10;
+  for (int i = 0; i < resultMatrix.GetLength(0); i++)
+  {
+    for (int j = 0; j < resultMatrix.GetLength(1); j++)
+    {
+      int sum = 0;
+      for (int k = 0; k < firstMartrix.GetLength(1); k++)
+      {
+        sum += firstMartrix[i,k] * secomdMartrix[k,j];
+      }
+      resultMatrix[i,j] = sum;
+    }
+  }
+}
+
+
+void CreateArray(int[,] matrix)
+{
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            for ( int k = 0; k < matrix.GetLength(2); k++)
-            {
-                matrix[i, j, k] = n;
-                Console.Write($"{matrix[i, j, k]} {(i,j,k)}\t");
-                n = n + 1;
-            }
+            matrix[i, j] = new Random().Next(1, 11); // [1, 10]
+            Console.Write($"{matrix[i, j]} \t");
         }
         Console.WriteLine();
-        
     }
 }
-
-Console.Clear();
-Console.Write("Введите размер массива (число строк и столбцов): ");
-int[] size = Console.ReadLine().Split(" ").Select(x => int.Parse(x)).ToArray();
-int[,,] matrix = new int[size[0], size[1], size[2]];
-while (size[0] * size[1] * size[2] > 99)
-{
-   Console.Write("Ошибка, повторите ввод: ");
-   size = Console.ReadLine().Split(" ").Select(x => int.Parse(x)).ToArray();
-   matrix = new int[size[0], size[1], size[2]];
-}
-Console.WriteLine("______________________________________________________");
-InputMatrix(matrix);
-
