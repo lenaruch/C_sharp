@@ -7,13 +7,13 @@
 // 5 2 6 7
 // Программа считает сумму элементов в каждой строке и выдаёт номер строки с наименьшей суммой элементов: 1 строка
 
-void InputMatrix(int[,] matrix)
+void InputMatrix(int[,] matrix) // Генерация двумерного массива
 {
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            matrix[i, j] = new Random().Next(-10, 11); // [-10, 10]
+            matrix[i, j] = new Random().Next(-10, 11); // Случайные числа в промежтутке от [-10, 10]
             Console.Write($"{matrix[i, j]} \t");
         }
         Console.WriteLine();
@@ -49,7 +49,9 @@ Console.Clear();
 Console.Write("Введите размер массива (число строк и столбцов): ");
 int[] size = Console.ReadLine().Split(" ").Select(x => int.Parse(x)).ToArray();
 int[,] matrix = new int[size[0], size[1]];
+Console.WriteLine("__________________________________");
 Console.WriteLine("Начальный массив:");
 InputMatrix(matrix);
+Console.WriteLine("__________________________________");
 Console.WriteLine("Сумма элементов каждой из сторк:");
 SumStringMatrix(matrix);

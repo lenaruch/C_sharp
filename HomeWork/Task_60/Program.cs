@@ -6,7 +6,7 @@
 // 27(0,0,1) 90(0,1,1)
 // 26(1,0,1) 55(1,1,1)
 
-void InputMatrix(int[,,] matrix)
+void InputMatrix(int[,,] matrix) // Генерация трехмерного массива
 {
     int n = 10;
     for (int i = 0; i < matrix.GetLength(0); i++)
@@ -21,7 +21,6 @@ void InputMatrix(int[,,] matrix)
             }
         }
         Console.WriteLine();
-        
     }
 }
 
