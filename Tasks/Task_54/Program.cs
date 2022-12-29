@@ -8,17 +8,17 @@
 // 9 5 3 2
 // 8 4 4 2
 
-void InputMatrix(int[,] matrix)
+void InputMatrix(int[,] matrix) // Генерация двумерного массива 
 {
     for (int i = 0; i < matrix.GetLength(0); i++)
 	    {
 	        for (int j = 0; j < matrix.GetLength(1); j++)
-	            matrix[i, j] = new Random().Next(-10, 11); // [-10, 10]
+	            matrix[i, j] = new Random().Next(-10, 11); // Рандомные числа в прмежутке от [-10, 10]
 	    }
 }
 
 
-void PrintMatrix(int[,] matrix)
+void PrintMatrix(int[,] matrix) // Вывод на экран матрицы после ее преобразования
 {
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
@@ -28,7 +28,7 @@ void PrintMatrix(int[,] matrix)
     }
 }
 
-void ReleaseMatrix(int[,] matrix)
+void ReleaseMatrix(int[,] matrix) // Сортировка массива по строкам
 {
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
@@ -53,9 +53,10 @@ Console.Write("Введите размер матрицы: ");
 int[] size = Console.ReadLine().Split(" ").Select(x => int.Parse(x)).ToArray();
 int[,] matrix = new int[size[0], size[1]];
 InputMatrix(matrix);
+Console.WriteLine("__________________________________");
 Console.WriteLine("Начальный двумерный массив: ");
 PrintMatrix(matrix);
-Console.WriteLine();
+Console.WriteLine("__________________________________");
 ReleaseMatrix(matrix);
 Console.WriteLine("Конечный двумерный массив: ");
 PrintMatrix(matrix);
